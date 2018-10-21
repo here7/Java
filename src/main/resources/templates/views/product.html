@@ -44,24 +44,19 @@
     </nav>
 
     <!-- STEP 3: Dipslay Each Post - th:each="post : ${products}" -->
-    <article th:each="prod : ${products}">
+    <article>
         <header>
             <!-- Blog Post Title - ${post.name} -->
-            <a th:href="@{/product/__${prod.id}__}">
-                <span th:text="${prod.id}"></span> <h1 th:text="${prod.name}"></h1>
-            </a>
+            <span th:text="${prod.id}"></span>
+            <h1 th:text="${prod.name}"></h1>
 
         </header>
-        <!-- Product description th:utext="${prod.description}" -->
+        <!-- Product description th:utext="${post.description}" -->
         <section th:utext="${prod.description}">
             <p>Descripción por defecto si no se SETTEA.</p>
         </section>
-
-        <!-- Product image th:utext="${prod.image}" -->
-        <img th:src="${prod.image}" height ="200px;" />
-
         <footer>
-            <!-- Price Product th:text="${prod.price}" -->
+            <!-- Price Product th:text="${product.price}" -->
             <address>
                 <span th:text="${prod.price}"> €</span>
             </address>
