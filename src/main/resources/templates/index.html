@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +64,7 @@
     </article>
 
     <footer>
-        <p>Copyright Dani Heredia 2018</p>
+        <p>Copyright Dani Heredia <span th:text="${#dates.format(#dates.createNow(),'YYYY')}"></span></p>
     </footer>
 
 </div>
