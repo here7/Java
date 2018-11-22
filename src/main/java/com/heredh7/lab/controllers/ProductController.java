@@ -1,11 +1,11 @@
 package com.heredh7.lab.controllers;
 
+//import com.heredh7.lab.database.DbPreloadStatement;
 import com.heredh7.lab.entities.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+  //  DbPreloadStatement datab = new DbPreloadStatement();
 
     @RequestMapping("/")
     public String list(Model model){
@@ -46,7 +47,7 @@ public class ProductController {
 
     /**
      * Single Product
-     * @param id product
+     * @param idProduct
      * @return
      */
     public Product getProduct(Integer idProduct){
@@ -60,6 +61,7 @@ public class ProductController {
 
         //System.out.println("HELLO WORLD: trying connection from ProductController");
         try {
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/heredh7_sl?autoReconnect=true&useSSL=false","user_test_here7","password");
             Statement stm = con.createStatement();

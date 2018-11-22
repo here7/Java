@@ -4,21 +4,6 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
-        maven {
-            // kafka-schema-registry, kafka-avro-serializer
-            url "https://packages.confluent.io/maven/"
-        }
-        maven {
-            // dbunit
-            url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-        maven {
-            // com.privalia:kafka-test
-            url "http://artifactory-mkp.privalia.pin/artifactory/libs-release"
-        }
-        maven {
-            url "http://repo.spring.io/milestone"
-        }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -36,28 +21,16 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-// Avro model classes generation
-//avro {
-//    stringType = "String"
-//    createSetters = true
-//    enableDecimalLogicalType = true
-//    fieldVisibility = "private"
-//}
-
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.boot:spring-boot-starter-web")
-	///compile('org.springframework.kafka:spring-kafka')
-
-	// Needed for Avro support
-	///compile("org.apache.avro:avro:${avroVersion}")
-	///compile("io.confluent:kafka-avro-serializer:${kafkaAvroToolsVersion}")
 	testCompile("junit:junit")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
-	///testCompile('org.springframework.kafka:spring-kafka-test')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
 	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.46'
-	compile 'org.apache.kafka:kafka-clients:0.10.2.0'
+
 	compile 'ch.qos.logback:logback-classic:1.2.2'
 
 	//testCompile("org.springframework.security:spring-security-test")
