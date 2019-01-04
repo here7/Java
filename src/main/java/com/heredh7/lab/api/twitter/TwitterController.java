@@ -8,14 +8,7 @@ import org.springframework.social.twitter.api.impl.TwitterTemplate;
 
 import java.util.List;
 
-/**
- * DATA OF MY APP
- * APP name: here_d7_musicHome
- * Client ID: 66c0300098bc4b979c20dae4110a7bd0
- * Client Secret: 32b5bd03d37a413cb1f5693efb51cfc5
- *
- * https://accounts.spotify.com/authorize?client_id=66c0300098bc4b979c20dae4110a7bd0&response_type=code&redirect_uri=https%3A%2F%localhost:8080%2Fapi.spotify%2callback&scope=user-read-private%20user-read-email&state=34fFs29kd09
- */
+
 @Configuration
 public class TwitterController{
    private String app_name;
@@ -23,7 +16,6 @@ public class TwitterController{
    private String consumer_secret;
    private String access_token;
    private String access_token_secret;
-   //private String redirect_uri = "http://localhost:8080/api.spotify/callback/";
 
 
    private String profile_id;
@@ -34,11 +26,11 @@ public class TwitterController{
     * Constructor without parameters. My account by default
     */
    public TwitterController(){
-      this.app_name = "app_java";
-      this.consumer_key = "nRB4JjcFT0txCVs9C2IvOvmWB";
-      this.consumer_secret = "hictAJ1QVEP23kIBIRpIcTTRGLgqQlXqjUlG02RfpMw4VTBPyK";
-      this.access_token = "1390924771-H1EVjRrTxllGrlDvmS6T47s2uUewHiBQ4Rhtf8t";
-      this.access_token_secret = "j1qzFIfI4beQsrG3axnhMTChZzRikblWNC9x03NZK4OLr";
+      this.app_name = "****";
+      this.consumer_key = "*****";
+      this.consumer_secret = "****";
+      this.access_token = "******";
+      this.access_token_secret = "*****";
    }
 
    /**
