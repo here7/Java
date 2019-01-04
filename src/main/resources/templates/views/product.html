@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymleaf.org">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!--  Page Title th:text="${productName}" -->
-    <title th:text="${productName}">Product - List</title>
-
-    <!-- CSS th:href="@{/css/blog.css}" -->
-    <link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
-    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+    <!-- CSS, METAS -->
+    <section th:replace="views/common/header::headfragment"></section>
 <body>
 
 <div class="container">
@@ -124,24 +105,11 @@
     </article>
     <div class="my_clear"></div>
 
-    <!-- Pagination -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
 
     <!-- Footer -->
-    <footer>
-        <p>Copyright Dani Heredia <span th:text="${#dates.format(#dates.createNow(),'YYYY')}"></span></p>
-    </footer>
+    <section th:replace="views/common/footer::footerfragment"></section>
 
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymleaf.org">
+
+<section  th:fragment="custommenufragment">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">daniheredia.com</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                <p class="navbar-text navbar-right">Signed in as <a href="http://localhost:8080/login/" class="navbar-link">Guest User</a></p>
+            </div>
+        </div>
+
+        <!-- Categories & Search -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="http://localhost:8080/products/"> Products </a>
+                <!--<a class="navbar-brand" href="#"> Add Product </a>
+                <a class="navbar-brand" href="#"> Supermarkets </a>-->
+                <div class="dropdown" style="float:inherit;">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a class="dropdown-item" href="http://localhost:8080/api-rest/">API RestFUL</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:8080/kafka/">Kafka</a></li>
+                        <li> <a class="dropdown-item" href="http://localhost:8080/microservice/">MicroService</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <a class="navbar-brand" href="http://localhost:8080/contact/"> Contact </a>
+                <!--<a class="navbar-brand" href="#"> Complains </a>
+                <a class="navbar-brand" href="#"> FAQ </a>-->
+                <a class="navbar-brand" href="#">
+                    <form class="navbar-search pull-rigth">
+                        <input type="text" class="search-query" placeholder="Search">
+                    </form>
+                </a>
+            </div>
+        </div>
+    </nav>
+</section>
+</html>

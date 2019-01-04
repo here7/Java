@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymleaf.org">
+    <!-- CSS, METAS -->
+    <section th:replace="views/common/header::headfragment"></section>
+
+<body>
+
+<div class="container">
+    <!-- MAIN MENU -->
+    <section  th:replace="views/common/menu::custommenufragment"></section>
+
+    <article th:each="prod : ${products}">
+        <div class="col-xs-12 col-md-6 bootstrap snippets">
+            <!-- product -->
+            <div class="product-content product-wrap clearfix">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="product-image">
+                            <!-- Product image th:utext="${prod.image}" -->
+                            <img th:src="${prod.image}" height ="200px;" />
+                            <span class="tag2 hot">
+                                HOT
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="product-deatil">
+                            <h5 class="name">
+                                <!-- Blog Post Title - ${post.name} -->
+                                <a th:href="@{/__${prod.id}__/}">
+                                    <span th:text="${prod.id}"></span> <h1 th:text="${prod.name}"></h1>
+                                </a>
+
+                            </h5>
+                            <p class="price-container">
+                               $<span th:text="${prod.price}"></span>
+                            </p>
+                            <span class="tag1"></span>
+                        </div>
+                        <!-- Product description th:utext="${prod.description}" -->
+                        <div class="description" th:utext="${prod.description}">
+                            <p>Descripción por defecto si no se SETTEA.</p>
+                            <p>Proin in ullamcorper lorem. Maecenas eu ipsum </p>
+                        </div>
+                        <div class="product-info smart-form">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <a th:href="@{/products/__${prod.id}__/}" target="_blank" class="btn btn-success"> View </a>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="rating">
+                                        <label for="stars-rating-5"><i class="fa fa-star"></i></label>
+                                        <label for="stars-rating-4"><i class="fa fa-star"></i></label>
+                                        <label for="stars-rating-3"><i class="fa fa-star text-primary"></i></label>
+                                        <label for="stars-rating-2"><i class="fa fa-star text-primary"></i></label>
+                                        <label for="stars-rating-1"><i class="fa fa-star text-primary"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end product -->
+        </div>
+    </article>
+    <div class="my_clear"></div>
+
+    <!-- Pagination -->
+    <section  th:replace="views/common/pagination::paginationfragment"></section>
+
+    <!-- Footer -->
+    <section  th:replace="views/common/footer::footerfragment"></section>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+</body>
+</html>

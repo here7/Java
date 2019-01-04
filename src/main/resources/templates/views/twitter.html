@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymleaf.org">
+    <!-- CSS, METAS -->
+    <section th:replace="views/common/header::headfragment"></section>
+
+<body>
+
+<div class="container">
+    <!-- MAIN MENU -->
+    <section  th:replace="views/common/menu::custommenufragment"></section>
+HELLO CODE =>
+    <span th:text="${code}"></span>
+
+    <div class="my_clear"></div>
+
+    <!-- Pagination -->
+    <section  th:replace="views/common/pagination::paginationfragment"></section>
+
+    <!-- Footer -->
+    <section  th:replace="views/common/footer::footerfragment"></section>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+</body>
+</html>
