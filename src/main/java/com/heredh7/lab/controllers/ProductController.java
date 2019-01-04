@@ -15,12 +15,11 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
   //  DbPreloadStatement datab = new DbPreloadStatement();
-
     @RequestMapping("/")
     public String list(Model model){
         model.addAttribute("productName","My Custom Page Title");
         model.addAttribute("products",createProducts());
-        return "views/list";
+        return "views/product-list";
     }
 
 
@@ -30,7 +29,6 @@ public class ProductController {
     @RequestMapping("{id}/")
     public String product(Model model, @PathVariable Integer id){
         //model.addAttribute("productName","My Custom Page Title");
-
         model.addAttribute("productId",id);
         model.addAttribute("productName",getProduct(id).getName());
         model.addAttribute("productDescription",getProduct(id).getDescription());
@@ -39,11 +37,6 @@ public class ProductController {
         return "views/product";
     }
 
-   /* @RequestMapping("/actualidad/{id}")
-    public String detalle(@PathVariable Long id, Model model) {
-        model.addAttribute("noticiaDetalle", this.noticiaService.get(id));
-        return actualidad;
-    }*/
 
     /**
      * Single Product
@@ -53,13 +46,6 @@ public class ProductController {
     public Product getProduct(Integer idProduct){
 
         Product product= new Product();
-        /*product1.setId(1);
-        product1.setName("Detergente HOLA Ariel");
-        product1.setDescription("Detergente más económico del mercado");
-        product1.setPrice(2.36);
-        product1.setImage("/images/blablabla");*/
-
-        //System.out.println("HELLO WORLD: trying connection from ProductController");
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
@@ -75,14 +61,11 @@ public class ProductController {
                 if(result.wasNull()){
                     System.out.println(" RESULT without expedient...");
                 } else{
-                    System.out.println(" Register PRODUCT -" + result.getInt("id") + "- it's Okay");
-                   // Product product = new Product();
                     product.setId(result.getInt("id"));
                     product.setName(result.getString("name"));
                     product.setDescription(result.getString("description"));
                     product.setImage(result.getString("image"));
                     product.setPrice(result.getDouble("price"));
-                    //products.add(product);
                 }
             }
 
@@ -93,7 +76,6 @@ public class ProductController {
             e.printStackTrace();
         }
 
-        //return "redirect/
         return product;
     }
 
@@ -101,7 +83,6 @@ public class ProductController {
     private List<Product> createProducts(){
         List<Product> products = new ArrayList<Product>();
 
-        //System.out.println("HELLO WORLD: trying connection from ProductController");
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/heredh7_sl?autoReconnect=true&useSSL=false","user_test_here7","password");
@@ -116,7 +97,6 @@ public class ProductController {
                 if(result.wasNull()){
                     System.out.println(" RESULT without expedient...");
                 } else{
-                    System.out.println(" Register PRODUCT -" + result.getInt("id") + "- it's Okay");
                     Product product = new Product();
                     product.setId(result.getInt("id"));
                     product.setName(result.getString("name"));
@@ -136,11 +116,4 @@ public class ProductController {
 
         return products;
     }
-
-    /*
-    private String getPostBody(){
-        String body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac finibus mi. Morbi porttitor urna dui, sed volutpat justo rutrum sit amet. Etiam elementum lacus eget malesuada egestas. Sed id lectus arcu. Pellentesque molestie dignissim diam non commodo. Nunc nec aliquet lectus. Ut a accumsan sapien. Pellentesque sit amet sem nisl. Nulla fringilla vulputate mauris, eleifend dapibus libero. Sed eu cursus orci. In hac habitasse platea dictumst. Vestibulum vel vulputate ex. Nam gravida blandit nisl, at luctus mi interdum ut. Pellentesque et pharetra mi. Proin id placerat diam. Ut porttitor risus in leo tincidunt, a iaculis velit maximus.</p>";
-        return body;
-    }*/
-
 }

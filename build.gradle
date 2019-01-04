@@ -1,37 +1,115 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.4.RELEASE'
+		springBootVersion = '2.0.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
+		jcenter()
+		gradlePluginPortal()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		//classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.14.0"
+		classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.3"
 	}
 }
+
+ext {
+	javaVersion = 8
+	avroVersion = '1.8.2'
+	kafkaAvroToolsVersion = '4.1.1'
+}
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'com.commercehub.gradle.plugin.avro'
 
 group = 'com.heredh7lab'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = "1.${javaVersion}"
+targetCompatibility = "1.${javaVersion}"
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven {
+		// kafka-schema-registry, kafka-avro-serializer
+		url "https://packages.confluent.io/maven/"
+	}
+	maven {
+		// dbunit
+		url 'https://oss.sonatype.org/content/repositories/snapshots/'
+	}
+
+	maven {
+		url "http://repo.spring.io/milestone"
+	}
+}
+
+// Avro model classes generation
+/*avro {
+	stringType = "String"
+	createSetters = true
+	enableDecimalLogicalType = true
+	fieldVisibility = "private"
+}*/
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-	compile("org.springframework.boot:spring-boot-starter-web")
-	testCompile("junit:junit")
-	testCompile("org.springframework.boot:spring-boot-starter-test")
+
+	//BASIC & VISUAL thymeleaf
+	compile("org.springframework.boot:spring-boot-starter")
+	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
-	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
-	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.46'
+	compile('javax.xml.bind:jaxb-api')
 
+	//OAUTH SECURITY
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.1.RELEASE'
+
+	//KAFKA
+	//compile('org.springframework.kafka:spring-kafka')
+
+	// AVRO
+	//compile("org.apache.avro:avro:${avroVersion}")
+	//compile("io.confluent:kafka-avro-serializer:${kafkaAvroToolsVersion}")
+
+	// for Avro class generation
+	//compile('joda-time:joda-time:2.9.9')
+
+	// Lombok
+	compile('org.projectlombok:lombok')
+
+	// Tests
+	//testCompile('org.springframework.kafka:spring-kafka-test')
+	testCompile('log4j:log4j:1.2.17')
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+
+	//COMMON TO SOCIAL NETWORKS
+	compile group: 'org.springframework.social', name: 'spring-social-core', version: '1.1.4.RELEASE'
+	compile group: 'org.springframework.social', name: 'spring-social-web', version: '1.1.4.RELEASE'
+	compile group: 'org.springframework.social', name: 'spring-social-config', version: '1.1.4.RELEASE'
+	compile group: 'org.springframework.social', name: 'spring-social-security', version: '1.1.0.RELEASE'
+
+	//Twitter
+	compile("org.springframework.social:spring-social-twitter:1.1.0.RELEASE")
+
+	//DATABASE
+	compile( group: 'mysql', name: 'mysql-connector-java', version: '5.1.46')
 	compile 'ch.qos.logback:logback-classic:1.2.2'
+	//	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 
-	//testCompile("org.springframework.security:spring-security-test")
+	//JSON
+	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.0'
+
+
 }
+/*
+configurations.all {
+	exclude module: 'slf4j-log4j12'
+}*/
